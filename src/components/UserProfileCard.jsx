@@ -25,7 +25,7 @@ const UserProfileCard =({ title, username, coverImage, avatar, verified }) => {
 
 const styles = StyleSheet.create({
   container:{
-    height: 250,
+    height: 185,
     height: 230,
     marginHorizontal: 10,
     shadowColor: "#ccc",
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     flex:1
   },
   coverImage: {
-    width: 250,
+    width: 185,
     height: 115,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20
@@ -56,8 +56,8 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     borderWidth: 3,
     borderColor: '#fff',
-    top: 90,
-    left: 100    
+    top: 75,
+    left: 70 
   },
   bottomContainer: {
     flex:1,

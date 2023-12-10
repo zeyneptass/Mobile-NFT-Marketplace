@@ -1,12 +1,12 @@
 import React from 'react'
 import { Text, View,ScrollView, StyleSheet} from 'react-native'
 
-import Card from '../components/Card'
-import NFTCard from '../components/NFTCard'
-import Avatar from '../components/Avatar'
-import UserProfileCard from '../components/UserProfileCard'
-import Section from '../components/Section'
-import data from '../data/mockData' 
+import Card from '../components/Card';
+import NFTCard from '../components/NFTCard';
+import Avatar from '../components/Avatar';
+import UserProfileCard from '../components/UserProfileCard';
+import Section from '../components/Section';
+import data from '../data/mockData';
 
 const Home =() => {
     return (

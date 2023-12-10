@@ -5,10 +5,9 @@ import { Entypo, MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 
 import { Colors } from 'react-native/Libraries/NewAppScreen'
 
-
-const Profile =() => {
+const Connect =() => {
     return (
-      <View style={styles.container}>
+      <View>
         <View style={styles.top}>
             <Entypo name='wallet' size={100} style={styles.icon} color={Colors.primary} />
             <Text style={styles.title}>Connect with wallet</Text>
@@ -99,4 +98,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default Profile;
+export default Connect;

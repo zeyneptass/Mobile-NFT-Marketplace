@@ -14,6 +14,11 @@ const Tab = createBottomTabNavigator();
 const AppNavigator = () =>{
     return(
         <Tab.Navigator screenOptions={{
+            headerTitleAlign: 'center',
+            headerTitleStyle: {
+                fontWeight: 'bold',
+                fontSize: 22
+            },
             tabBarStyle: {
                 height: 70
             },
@@ -46,6 +51,7 @@ const AppNavigator = () =>{
         }}
         >
             <Tab.Screen name="Home" component={Home} options={{
+                title: "OpenSea",
                 tabBarIcon:({color,size}) => <Entypo name="home" size={size} color={color} />
             }} />
             <Tab.Screen name="Stats" component={Stats} options={{
