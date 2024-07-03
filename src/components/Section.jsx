@@ -8,16 +8,16 @@ const Section = ({ title, DataComponent, data, containerStyle, titleStyle, flatl
       {flatlist ? (
         <FlatList
           data={data}
-          renderItem={({ item }) => <DataComponent {...item} />}
+          renderItem={({ item }) => <DataComponent nft={item} />}
           keyExtractor={(item, index) => index.toString()}
           numColumns={2}
         />
       ) : (
         <FlatList
           data={data}
-          renderItem={({ item, index }) => <DataComponent key={index} {...item} />}
+          renderItem={({ item, index }) => <DataComponent nft={item} key={index} />}
           keyExtractor={(item, index) => index.toString()}
-          horizontal={true} // Set this to false for vertical FlatList
+          horizontal={true} 
           showsHorizontalScrollIndicator={false}
         />
       )}
@@ -40,4 +40,3 @@ const styles = StyleSheet.create({
 });
 
 export default Section;
-

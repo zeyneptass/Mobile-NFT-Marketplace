@@ -1,15 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 import { StyleSheet, Text, View, Pressable } from "react-native";
+import { WalletConnectModal } from "@walletconnect/modal-react-native";
 
-
-import { Entypo, MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
-
-import { Colors } from 'react-native/Libraries/NewAppScreen'
-import { Zeyno } from '../components/WalletConnectModal';
-import {
-  WalletConnectModal,
-  useWalletConnectModal,
-} from "@walletconnect/modal-react-native";
 const projectId = "bef4efc64d652f4633d602268040f5f4";
 
 const providerMetadata = {
@@ -17,41 +9,55 @@ const providerMetadata = {
   description: "toros university final project",
   url: "https://www.torosnft.com",
 };
-const Profile =() => {
+
+export default function Zeyno() {
+  const [isConnected, setIsConnected] = useState(false);
+  const [address, setAddress] = useState("");
+  const [provider, setProvider] = useState(null);
   const [showModal, setShowModal] = useState(false);
-  const { open, isConnected, address, provider } = useWalletConnectModal();
+
+  const handleButtonPress = async () => {
+    if (isConnected) {
+      provider.disconnect();
+    } else {
+      setShowModal(true);
+    }
+  };
 
   const handleConnect = async (provider, session) => {
-     if (isConnected) {
-      return provider?.disconnect();
-    }
-    return open();
+    setIsConnected(true);
+    setAddress(session.address);
+    setProvider(provider);
+    setShowModal(false);
   };
 
   const handleDisconnect = async () => {
-     if (!isConnected) {
-      return open();
-    }
-    return provider?.disconnect();
-    
+    setIsConnected(false);
+    setAddress("");
+    setProvider(null);
+    setShowModal(false);
   };
 
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>WalletConnect Modal RN Tutorial</Text>
-      <Text>{isConnected ? address : "No Connected"}</Text>
-      <Pressable onPress={handleConnect} style={styles.pressableMargin}>
+      <Text>{isConnected ? address : "Not Connected"}</Text>
+      <Pressable onPress={handleButtonPress} style={styles.pressableMargin}>
         <Text>{isConnected ? "Disconnect" : "Connect"}</Text>
       </Pressable>
 
-      <WalletConnectModal
-        projectId={projectId}
-        providerMetadata={providerMetadata}
-      />
+      {showModal && (
+        <WalletConnectModal
+          projectId={projectId}
+          providerMetadata={providerMetadata}
+          onClose={() => setShowModal(false)}
+          onConnect={handleConnect}
+          onDisconnect={handleDisconnect}
+        />
+      )}
     </View>
   );
-} 
-
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -69,5 +75,3 @@ const styles = StyleSheet.create({
     marginTop: 16,
   },
 });
-
-export default Profile;
