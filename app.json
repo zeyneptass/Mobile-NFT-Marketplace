@@ -28,6 +28,19 @@
     }
     , "packagerOpts":{
       "sourceExts": [ "js", "json", "ts", "tsx", "jsx", "vue"]
+    },
+     "expo": {
+    "ios": {
+      "infoPlist": {
+        "LSApplicationQueriesSchemes": [
+          "metamask",
+          "trust",
+          "safe",
+          "rainbow",
+          "uniswap"
+        ]
+      }
     }
+  }
   }
 }

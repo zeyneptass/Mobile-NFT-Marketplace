@@ -1,6 +1,9 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, Pressable } from "react-native";
+import { StyleSheet, Text, View, Pressable, Button } from "react-native";
 import { WalletConnectModal } from "@walletconnect/modal-react-native";
+
+import { useWeb3Modal } from '@web3modal/wagmi-react-native'
+
 
 const projectId = "bef4efc64d652f4633d602268040f5f4";
 
@@ -10,54 +13,20 @@ const providerMetadata = {
   url: "https://www.torosnft.com",
 };
 
-export default function Zeyno() {
-  const [isConnected, setIsConnected] = useState(false);
-  const [address, setAddress] = useState("");
-  const [provider, setProvider] = useState(null);
-  const [showModal, setShowModal] = useState(false);
-
-  const handleButtonPress = async () => {
-    if (isConnected) {
-      provider.disconnect();
-    } else {
-      setShowModal(true);
-    }
-  };
-
-  const handleConnect = async (provider, session) => {
-    setIsConnected(true);
-    setAddress(session.address);
-    setProvider(provider);
-    setShowModal(false);
-  };
-
-  const handleDisconnect = async () => {
-    setIsConnected(false);
-    setAddress("");
-    setProvider(null);
-    setShowModal(false);
-  };
+export default function ConnectView() {
+  const { open } = useWeb3Modal()
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.heading}>WalletConnect Modal RN Tutorial</Text>
-      <Text>{isConnected ? address : "Not Connected"}</Text>
-      <Pressable onPress={handleButtonPress} style={styles.pressableMargin}>
-        <Text>{isConnected ? "Disconnect" : "Connect"}</Text>
+    <>
+      <Pressable onPress={() => open()}>
+        <Text>Open Connect Modal</Text>
       </Pressable>
-
-      {showModal && (
-        <WalletConnectModal
-          projectId={projectId}
-          providerMetadata={providerMetadata}
-          onClose={() => setShowModal(false)}
-          onConnect={handleConnect}
-          onDisconnect={handleDisconnect}
-        />
-      )}
-    </View>
-  );
+    </>
+  )
 }
+
+
+ 
 
 const styles = StyleSheet.create({
   container: {

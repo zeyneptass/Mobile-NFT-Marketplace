@@ -52,7 +52,7 @@ const AppNavigator = () =>{
         }}
         >
             <Tab.Screen name="Home" component={Home} options={{
-                title: "OpenSea",
+                title: "Home",
                 tabBarIcon:({color,size}) => <Entypo name="home" size={size} color={color} />
             }} />
             <Tab.Screen name="Stats" component={Stats} options={{
