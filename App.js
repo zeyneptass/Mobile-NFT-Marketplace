@@ -26,7 +26,7 @@ const metadata = {
   url: "https://www.torosnft.com/",
   icons: ["https://avatars.githubusercontent.com/u/37784886"],
   redirect: {
-    native: "nftapp://",
+    native: "metamask://",
   },
 };
 
@@ -42,7 +42,10 @@ createWeb3Modal({
   enableAnalytics: true, // Optional - defaults to your Cloud configuration
 });
 
+
+
 export default function App() {
+  
   return (
     <WagmiProvider config={wagmiConfig}>
       <QueryClientProvider client={queryClient}>

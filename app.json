@@ -12,10 +12,19 @@
       "backgroundColor": "#ffffff"
     },
     "assetBundlePatterns": [
-      "**/*"
+      "*/"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "LSApplicationQueriesSchemes": [
+          "metamask",
+          "trust",
+          "safe",
+          "rainbow",
+          "uniswap"
+        ]
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -28,19 +37,6 @@
     }
     , "packagerOpts":{
       "sourceExts": [ "js", "json", "ts", "tsx", "jsx", "vue"]
-    },
-     "expo": {
-    "ios": {
-      "infoPlist": {
-        "LSApplicationQueriesSchemes": [
-          "metamask",
-          "trust",
-          "safe",
-          "rainbow",
-          "uniswap"
-        ]
-      }
     }
-  }
   }
 }
